@@ -4,7 +4,7 @@ let wishes = [
         price : "12000",
         link : "https://www.motoland.rs/proizvod/30269/hjc-f70-tino-mc21",
         shop : "Motoland",
-        valute : "rsd",
+        currency : "rsd",
         important : true
     },
     {
@@ -12,7 +12,7 @@ let wishes = [
         price : "3500",
         link : "https://www.motoland.rs/proizvod/11268/modeka-mx-top-sive-rukavice",
         shop : "Motoland",
-        valute : "rsd",
+        currency : "rsd",
         important : true
     },
 ]
