@@ -1,3 +1,8 @@
+window.addEventListener('beforeunload', save)
+
+function save(){
+    localStorage.db = JSON.stringify(wishes)
+}
 // helpers
 let index = null;
 // views
@@ -70,7 +75,7 @@ function saveNewWish(e){
     priceInput.value ='';
     linkInput.value ='';
     shopInput.value ='';
-    currencyInput.value ='';
+    currencyInput.value ='rsd';
     importantInput.value ='';
 }
 
@@ -149,7 +154,7 @@ function showEditView(e){
     eshopInput.value = currentWish.shop;
     ecurrencyInput.value = currentWish.currency;
 
-    (currentWish.important) ? eimportantInput.setAttribute('checked', true) : false;
+    (currentWish.important) ? eimportantInput.setAttribute('checked', 'true') : false;
 
     showView('edit-wishes-view');
 }
