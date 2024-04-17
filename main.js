@@ -3,7 +3,6 @@ let index = null;
 // views
 let allWishesTbody = document.querySelector('tbody');
 let allWishesViews = document.querySelectorAll('.wish-view');
-// let editView = document.querySelector('#edit-wishes-view')
 
 // buttons
 let allNavBtn = document.querySelectorAll('nav a');
@@ -17,6 +16,7 @@ let linkInput = document.querySelector('input[name="link"]');
 let shopInput = document.querySelector('input[name="shop"]');
 let currencyInput = document.querySelector('select[name="currency"]');
 let importantInput = document.querySelector('input[name="important"]');
+let searchInput =document.querySelector('input[type="search"]')
 
 let eitemInput = document.querySelector('input[name="eitem"]');
 let epriceInput = document.querySelector('input[name="eprice"]');
@@ -26,8 +26,6 @@ let ecurrencyInput = document.querySelector('select[name="ecurrency"]');
 let eimportantInput = document.querySelector('input[name="eimportant"]');
 
 crateWishTable();
-
-
 
 // events
 saveBtn.addEventListener('click', saveNewWish);
@@ -40,9 +38,18 @@ allNavBtn.forEach(btn => btn.addEventListener('click', function (e){
     showView(`${this.innerHTML.toLowerCase()}-view`);
 }))
 
-// allEditBtn.forEach(btn => btn.addEventListener('click', function (){showView('edit-wishes-view')}));
+searchInput.addEventListener('input', searchDB);
 
 // functions
+function searchDB(){
+    let searchTerm = this.value.toLowerCase();
+    let filtered = wishes.filter(function(el){
+        return el.item.toLowerCase().includes(searchTerm) ||
+            el.price.toLowerCase().includes(searchTerm) ||
+            el.shop.toLowerCase().includes(searchTerm);
+    })
+    crateWishTable(filtered)
+}
 
 function saveNewWish(e){
     e.preventDefault()
@@ -65,7 +72,6 @@ function saveNewWish(e){
     shopInput.value ='';
     currencyInput.value ='';
     importantInput.value ='';
-
 }
 
 function updateWish(e){
@@ -99,12 +105,13 @@ function showView(viewId) {
     }
 }
 
-function crateWishTable(){
+function crateWishTable(filtered){
     showView('all-wishes-view')
+    let data = filtered || wishes;
     let text = '';
     let fullPrice;
     let importantMsg;
-    wishes.forEach((wish,index) => {
+    data.forEach((wish,index) => {
         (wish.important) ? importantMsg = "yes" : importantMsg = "no"
         fullPrice = wish.price + wish.currency;
         text +=`
@@ -146,7 +153,6 @@ function showEditView(e){
 
     showView('edit-wishes-view');
 }
-
 
 function deleteWish(){
     index = this.getAttribute('data-index');
