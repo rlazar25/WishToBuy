@@ -73,11 +73,8 @@ nav ul li a{
     justify-content: center;
     align-items: center;
 }
+
 /*  table   */
-
-
-
-/* Style the table */
 table {
     /*margin: 20px;*/
     width: 60vw;
@@ -87,17 +84,16 @@ table {
 
 /* Style table header */
 
-
-thead th {
-    padding: 10px;
-    border-bottom: 2px solid #dee2e6; /* Light gray border bottom */
+thead th,
+tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #dee2e6; /* Light gray border bottom */
+}
+thead th{
+    border-bottom: 2px solid #dee2e6;
 }
 
 /* Style table body */
-tbody td {
-    padding: 10px;
-    border-bottom: 1px solid #dee2e6; /* Light gray border bottom */
-}
 th,td{
     text-align: center;
 }
@@ -109,6 +105,10 @@ th,td{
 .action-td button{
     font-size: 1rem;
 }
+tr.yes td{
+    background: pink;
+}
+
 
 /*  add wishes  */
 
@@ -119,8 +119,8 @@ th,td{
 }
 #add-wishes-view input[type="text"],
 #add-wishes-view select,
-#add-wishes-view option,
-#edit-wishes-view option,
+#add-wishes-view select option,
+#edit-wishes-view select option,
 #edit-wishes-view input[type="text"],
 #edit-wishes-view select {
     width: 100%;
@@ -135,7 +135,7 @@ th,td{
     display: block;
     margin: auto;
 }
-form button{
+form     button{
     margin: 1rem 0;
     padding: .7rem 2rem;
     border-radius: 10px;
@@ -161,8 +161,7 @@ form button:hover{
 .btn:hover{
     background: #acb2b4;
 }
-
-tr.yes td{
-    background: pink;
+.delete{
+    background: red;
+    color: white;
 }
-

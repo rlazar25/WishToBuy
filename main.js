@@ -1,11 +1,14 @@
+// helpers
+let index = null;
 // views
 let allWishesTbody = document.querySelector('tbody');
 let allWishesViews = document.querySelectorAll('.wish-view');
-let editView = document.querySelector('#edit-wishes-view')
+// let editView = document.querySelector('#edit-wishes-view')
 
 // buttons
-let allNavBtns = document.querySelectorAll('nav a');
+let allNavBtn = document.querySelectorAll('nav a');
 let saveBtn = document.querySelector('#save-btn');
+let updateBtn = document.querySelector('#update-btn');
 
 // inputs
 let itemInput = document.querySelector('input[name="item"]');
@@ -15,14 +18,21 @@ let shopInput = document.querySelector('input[name="shop"]');
 let currencyInput = document.querySelector('select[name="currency"]');
 let importantInput = document.querySelector('input[name="important"]');
 
+let eitemInput = document.querySelector('input[name="eitem"]');
+let epriceInput = document.querySelector('input[name="eprice"]');
+let elinkInput = document.querySelector('input[name="elink"]');
+let eshopInput = document.querySelector('input[name="eshop"]');
+let ecurrencyInput = document.querySelector('select[name="ecurrency"]');
+let eimportantInput = document.querySelector('input[name="eimportant"]');
+
 crateWishTable();
 
-let allEditBtns = document.querySelectorAll('td button');
 
 
 // events
 saveBtn.addEventListener('click', saveNewWish);
-allNavBtns.forEach(btn => btn.addEventListener('click', function (e){
+updateBtn.addEventListener('click', updateWish)
+allNavBtn.forEach(btn => btn.addEventListener('click', function (e){
     if(e.preventDefault()){
         e.preventDefault();
     }
@@ -30,37 +40,50 @@ allNavBtns.forEach(btn => btn.addEventListener('click', function (e){
     showView(`${this.innerHTML.toLowerCase()}-view`);
 }))
 
-allEditBtns.forEach(btn => btn.addEventListener('click', showEditView))
+// allEditBtn.forEach(btn => btn.addEventListener('click', function (){showView('edit-wishes-view')}));
 
 // functions
 
 function saveNewWish(e){
     e.preventDefault()
-    let newWish ={
-        item : itemInput.value,
-        price : priceInput.value,
-        link : linkInput.value,
-        shop : shopInput.value,
-        currency : currencyInput.value,
-        important : importantInput.checked
+    let newWish = {
+        item: itemInput.value,
+        price: priceInput.value,
+        link: linkInput.value,
+        shop: shopInput.value,
+        currency: currencyInput.value,
+        important: importantInput.checked
     }
-    console.log(newWish);
     wishes.push(newWish);
     crateWishTable();
-    console.log(wishes);
-    showView(`all-wishes-view`)
+    showView(`all-wishes-view`);
+    // toggleBtn();
 
     itemInput.value ='';
     priceInput.value ='';
-    shopInput.value ='';
     linkInput.value ='';
+    shopInput.value ='';
     currencyInput.value ='';
     importantInput.value ='';
 
 }
 
+function updateWish(e){
+    e.preventDefault();
+    let updatedWish = {
+        item : eitemInput.value,
+        price : epriceInput.value,
+        link : elinkInput.value,
+        shop : eshopInput.value,
+        currency : ecurrencyInput.value,
+        important : eimportantInput.checked
+    }
+    wishes[index] = updatedWish;
+    crateWishTable();
+}
+
 function toggleBtn(btn){
-    allNavBtns.forEach(btn =>{
+    allNavBtn.forEach(btn =>{
         btn.classList.remove('active');
     })
     btn.classList.add('active');
@@ -76,18 +99,12 @@ function showView(viewId) {
     }
 }
 
-function showEditView(){
-    allWishesViews.forEach(view => {
-        view.style.display ='none'
-    })
-    editView.style.display = 'block'
-}
-
 function crateWishTable(){
+    showView('all-wishes-view')
     let text = '';
     let fullPrice;
     let importantMsg;
-    wishes.forEach(wish => {
+    wishes.forEach((wish,index) => {
         (wish.important) ? importantMsg = "yes" : importantMsg = "no"
         fullPrice = wish.price + wish.currency;
         text +=`
@@ -98,11 +115,41 @@ function crateWishTable(){
                 <td>${wish.shop}</td>
                 <td>${importantMsg}</td>
                 <td class="action-td">
-                    <button class="btn">Edit <i class="fa-solid fa-pen-to-square"></i> </button>
-                    <button class="btn">Delete <i class="fa-solid fa-trash"></i></button>
+                    <button data-index="${index}" class="btn edit">Edit <i class="fa-solid fa-pen-to-square"></i> </button>
+                    <button data-index="${index}" class="btn delete">Delete <i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
         `.trim();
     })
     allWishesTbody.innerHTML = text;
+    let allEditBtn = document.querySelectorAll('td button.edit');
+    let allDeletebtn = document.querySelectorAll('td button.delete');
+
+    allDeletebtn.forEach((btn, index) => {
+        btn.addEventListener('click', deleteWish);
+        allEditBtn[index].addEventListener('click', showEditView)
+    })
+
+}
+
+function showEditView(e){
+    index = this.getAttribute('data-index');
+    let currentWish = wishes[index]
+
+    eitemInput.value = currentWish.item;
+    epriceInput.value = currentWish.price;
+    elinkInput.value = currentWish.link;
+    eshopInput.value = currentWish.shop;
+    ecurrencyInput.value = currentWish.currency;
+
+    (currentWish.important) ? eimportantInput.setAttribute('checked', true) : false;
+
+    showView('edit-wishes-view');
+}
+
+
+function deleteWish(){
+    index = this.getAttribute('data-index');
+    wishes.splice(index, 1);
+    crateWishTable();
 }

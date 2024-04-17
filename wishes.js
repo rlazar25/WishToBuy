@@ -5,7 +5,7 @@ let wishes = [
         link : "https://www.motoland.rs/proizvod/30269/hjc-f70-tino-mc21",
         shop : "Motoland",
         currency : "rsd",
-        important : true
+        important : false
     },
     {
         item : "Rukavice",
