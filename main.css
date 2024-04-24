@@ -46,3 +46,13 @@ tr.yes td{
 input{
     margin: 1rem 0 ;
 }
+/*  MEDIA QUERY */
+@media only screen and (min-width: 767px) and (max-width: 992px){
+
+}
+@media only screen and (min-width: 992px) and (max-width: 1200px){
+
+}
+@media only screen and (min-width: 1200px) {
+
+}
