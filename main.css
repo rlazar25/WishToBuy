@@ -21,12 +21,25 @@ th,
 td{
     text-align: center;
 }
+.table-wrapper{
+    width: 95vw;
+    margin: 0 auto;
+}
 .action-td{
     display: flex;
     justify-content: space-between;
 }
+.action-td button{
+    margin-right: 5px;
+}
+.edit{
+    color: white;
+}
 button span{
     display: none;
+}
+tr.yes td{
+   background: pink;
 }
 
 /*  ADD WISHES  */

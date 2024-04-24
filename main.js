@@ -123,12 +123,12 @@ function crateWishTable(filtered){
             <tr class="${importantMsg.toLowerCase()}">
                 <td>${wish.item}</td>
                 <td>${fullPrice}</td>
-                <td><a href="${wish.link}" class="my-btn">Link</a></td>
+                <td><a href="${wish.link}" class="my-btn btn btn-primary btn-sm">Link</a></td>
                 <td>${wish.shop}</td>
                 <td>${importantMsg}</td>
                 <td class="action-td">
-                    <button data-index="${index}" class="my-btn  edit"> <span>Edit</span>  <i class="fa-solid fa-pen-to-square"></i> </button>
-                    <button data-index="${index}" class="my-btn delete"> <span>Delete</span>  <i class="fa-solid fa-trash"></i></button>
+                    <button data-index="${index}" class="my-btn btn btn-warning btn-sm  edit"> <span>Edit</span>  <i class="fa-solid fa-pen-to-square"></i> </button>
+                    <button data-index="${index}" class="my-btn btn btn-danger btn-sm delete"> <span>Delete</span>  <i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
         `.trim();
