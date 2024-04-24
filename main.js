@@ -127,8 +127,8 @@ function crateWishTable(filtered){
                 <td>${wish.shop}</td>
                 <td>${importantMsg}</td>
                 <td class="action-td">
-                    <button data-index="${index}" class="btn edit">Edit <i class="fa-solid fa-pen-to-square"></i> </button>
-                    <button data-index="${index}" class="btn delete">Delete <i class="fa-solid fa-trash"></i></button>
+                    <button data-index="${index}" class="btn edit"> <span>Edit</span>  <i class="fa-solid fa-pen-to-square"></i> </button>
+                    <button data-index="${index}" class="btn delete"> <span>Delete</span>  <i class="fa-solid fa-trash"></i></button>
                 </td>
             </tr>
         `.trim();
