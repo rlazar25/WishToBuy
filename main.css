@@ -11,6 +11,10 @@
 }
 
 /*  GENERAL */
+.wrapper{
+    width: 95vw;
+    margin: 0 auto;
+}
 h2{
     text-align: center;
     margin: 3rem 0;
@@ -20,10 +24,6 @@ h2{
 th,
 td{
     text-align: center;
-}
-.table-wrapper{
-    width: 95vw;
-    margin: 0 auto;
 }
 .action-td{
     display: flex;
@@ -43,3 +43,6 @@ tr.yes td{
 }
 
 /*  ADD WISHES  */
+input{
+    margin: 1rem 0 ;
+}
