@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
-        <h1 class="navbar-brand display-1 header">Wish To Buy</h1>
+        <h1 class="display-1 header">Wish To Buy</h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +27,7 @@
 
             </ul>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
     </div>
@@ -40,7 +40,7 @@
             <div class="table-responsive table-wrapper">
             <table class="table">
                 <thead>
-                    <tr>
+                    <tr class="no">
                         <th>Item</th>
                         <th>Price</th>
                         <th>Link</th>
@@ -67,7 +67,11 @@
                     <option value="rsd">rsd</option>
                     <option value="eur">eur</option>
                 </select>
-                <input  type="checkbox" name="important"> Important
+                <label class="custom-checkbox">
+                    <input class="check"  type="checkbox" name="important">
+                    <span class="checkmark"></span>
+                    Important
+                </label>
                 <button class="btn btn-info d-block " id="save-btn">Save</button>
             </form>
         </div>
@@ -82,7 +86,11 @@
                     <option value="rsd">rsd</option>
                     <option value="eur">eur</option>
                 </select>
-                <input  type="checkbox" name="eimportant"> Important
+                <label class="custom-checkbox">
+                    <input class="check"  type="checkbox" name="eimportant">
+                    <span class="checkmark"></span>
+                    Important
+                </label>
                 <button class="btn btn-info d-block " id="update-btn">Update</button>
             </form>
         </div>

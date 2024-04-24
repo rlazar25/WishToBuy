@@ -3,8 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+    --primary-color: #FFBB70;
+    --secondary-color: #FFEC9E;
+    --trnary-color: #ED9455;
+    --light-color: #FFFBDA;
+    --red-color: #ffa7a8;
+    --white-color: #fff;
+    --black-color: #000;
+}
 
 /*  GENERAL */
+body{
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
 .wrapper{
     width: 95vw;
     margin: 0 auto;
@@ -13,17 +26,35 @@ h2{
     text-align: center;
     margin: 3rem 0;
 }
+.active{
+    border-bottom: 3px solid var(--trnary-color);
+    width: 100%;
+    color: var(--trnary-color);
+}
+
 
 /*  NAV */
 .header{
     font-size: 1.5rem;
     cursor: default;
+    font-weight: 600;
+    margin-right: 2rem;
+}
+nav{
+    background: var(--secondary-color);
+    color: var(--trnary-color);
+}
+.nav-link{
+    color: var(--trnary-color);
+    font-size: 1.2rem;
 }
 
 /*  ALL WISHES  */
-th,
-td{
+thead tr.no th,
+tr.no td{
     text-align: center;
+    background: var(--secondary-color);
+    color: var(--trnary-color);
 }
 .action-td{
     display: flex;
@@ -32,24 +63,123 @@ td{
 .action-td button{
     margin-right: 5px;
 }
-.edit{
-    color: white;
-}
+
 button span{
     display: none;
 }
 tr.yes td{
-   background: pink;
+    text-align: center;
+   background: var(--red-color);
+    color: var(--secondary-color);
+}
+.link-btn,
+.edit{
+    background: var(--trnary-color);
+    border: var(--trnary-color);
+    color: var(--white-color);
+}
+.link-btn:hover,
+.edit:hover{
+    background: var(--trnary-color);
+    border: var(--trnary-color);
+    color: var(--black-color);
+}
+.delete:hover{
+    color: var(--black-color);
 }
 
 /*  ADD WISHES  */
-input{
+select.form-control,
+input.form-control{
     margin: 1rem 0 ;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--trnary-color);
+}
+select.form-control:focus,
+input.form-control:focus{
+    background-color: var(--secondary-color);
+}
+input.form-control::placeholder{
+    color: var(--trnary-color);
+}
+input[type="search"]{
+    border:2px solid var(--trnary-color);
 }
 #save-btn,
 #update-btn{
+    background: var(--trnary-color);
+    color: var(--secondary-color);
+    border: none;
+    letter-spacing: 2px;
+    font-size: 1.3rem;
     width: 100%;
+    margin-bottom: 20px;
 }
+/*checkbox*/
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    transition: color 0.3s;
+    margin: 1rem 0 ;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.custom-checkbox .checkmark {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--trnary-color);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+.custom-checkbox .checkmark::before {
+    content: "\2713";
+    font-size: 16px;
+    color: transparent;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: scale(1.1) rotateZ(360deg) rotateY(360deg);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark::before {
+    color: var(--trnary-color);
+}
+
+
+
+.custom-checkbox:hover .checkmark {
+    border-color: var(--secondary-color);
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.custom-checkbox input[type="checkbox"]:focus + .checkmark {
+    box-shadow: 0 0 3px 2px var(--trnary-color);
+    outline: none;
+}
+
+.custom-checkbox .checkmark,
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    transition: background-color 1.3s, border-color 1.3s, color 1.3s, transform 0.3s;
+}
+
 /*  MEDIA QUERY */
 
 @media only screen and (min-width: 576px) and (max-width: 767px){
@@ -70,6 +200,9 @@ input{
     .action-td{
         display: flex;
         justify-content: space-evenly;
+    }
+    button span{
+        display: inline;
     }
     #add-wishes-view,
     #edit-wishes-view{
@@ -92,6 +225,9 @@ input{
         width: 50vw;
         margin: 0 auto;
     }
+    button span{
+        display: inline;
+    }
     #save-btn,
     #update-btn{
         width: 30%;
@@ -107,6 +243,9 @@ input{
         display: flex;
         justify-content: center;
         gap: 2rem;
+    }
+    button span{
+        display: inline;
     }
     #add-wishes-view,
     #edit-wishes-view{

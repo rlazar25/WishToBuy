@@ -123,7 +123,7 @@ function crateWishTable(filtered){
             <tr class="${importantMsg.toLowerCase()}">
                 <td>${wish.item}</td>
                 <td>${fullPrice}</td>
-                <td><a href="${wish.link}" class="my-btn btn btn-primary btn-sm">Link</a></td>
+                <td><a href="${wish.link}" class="my-btn link-btn btn btn-primary btn-sm">Link</a></td>
                 <td>${wish.shop}</td>
                 <td>${importantMsg}</td>
                 <td class="action-td">
